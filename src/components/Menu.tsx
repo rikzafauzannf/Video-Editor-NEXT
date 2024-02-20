@@ -26,23 +26,23 @@ export const Menu = observer(() => {
             onClick={() => option.action(store)}
             className={
               store.selectedMenuOption === option.name
-                ? "py-4  w-full flex flex-col  items-center text-xs bg-primary text-white rounded-md shadow-md"
-                : "py-4  w-full flex flex-col  items-center text-xs"
+                ? "py-4  w-full space-y-2 flex flex-col  items-center text-xs bg-primary text-white rounded-md shadow-md"
+                : "py-4  w-full space-y-2 flex flex-col  items-center text-xs"
             }
           >
             <option.icon
               className={
                 store.selectedMenuOption === option.name
                   ? "text-white transition-all ease-in-out duration-150"
-                  : "text-black transition-all ease-in-out duration-150"
+                  : "text-white/50 transition-all ease-in-out duration-150"
               }
               size="15"
             />
             <div
               className={
                 store.selectedMenuOption === option.name
-                  ? "font-semibold text-xs"
-                  : "font-light text-xs"
+                  ? "font-semibold text-xs font-mono"
+                  : "font-light text-xs font-sans"
               }
             >
               {option.name}
