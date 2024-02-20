@@ -1,7 +1,7 @@
 "use client";
-
+import { useState, useEffect } from "react";
 import { fabric } from "fabric";
-import React, { useEffect } from "react";
+import React from "react";
 import { StoreContext } from "@/store";
 import { observer } from "mobx-react";
 import "@/utils/fabric-utils";
@@ -39,18 +39,19 @@ export const Editor = observer(() => {
       fabric.util.requestAnimFrame(render);
     });
   }, [store]);
+
   return (
     <>
-      <div className="p-0 m-0">
+      <div className="p-0 m-0 relative">
         <Navbar />
         <div className="w-full flex h-screen">
-          <div className="tile w-1/12 flex flex-col bg-base-300 px-3">
+          <div className="tile w-1/12 flex flex-col bg-base-content text-white px-3 pt-5">
             <Menu />
           </div>
-          <div className="flex flex-col overflow-auto w-1/5 px-4 bg-slate-800/50">
+          <div className="flex flex-col overflow-y-auto w-[30%] bg-gradient-to-b from-primary to-primary/50 transition-all ease-in-out duration-200  px-4 relative">
             <Resources />
           </div>
-          <div className="flex-auto w-full h-screen overflow-y-auto px-4">
+          <div className="flex-auto w-full h-screen overflow-y-auto px-4 relative">
             <div className="w-full flex justify-center items-center p-5">
               <canvas
                 id="canvas"
@@ -72,3 +73,5 @@ export const Editor = observer(() => {
     </>
   );
 });
+
+export default Editor;

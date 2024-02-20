@@ -24,20 +24,25 @@ export const Menu = observer(() => {
           <button
             key={option.name}
             onClick={() => option.action(store)}
-            className="py-4 px-2 w-full flex flex-row space-x-3 items-center text-xs"
+            className={
+              store.selectedMenuOption === option.name
+                ? "py-4  w-full flex flex-col  items-center text-xs bg-primary text-white rounded-md shadow-md"
+                : "py-4  w-full flex flex-col  items-center text-xs"
+            }
           >
             <option.icon
-              className=""
-              size="20"
-              color={
-                store.selectedMenuOption === option.name ? "#00a0f5" : "black"
+              className={
+                store.selectedMenuOption === option.name
+                  ? "text-white transition-all ease-in-out duration-150"
+                  : "text-black transition-all ease-in-out duration-150"
               }
+              size="15"
             />
             <div
               className={
                 store.selectedMenuOption === option.name
-                  ? "font-semibold"
-                  : "font-light"
+                  ? "font-semibold text-xs"
+                  : "font-light text-xs"
               }
             >
               {option.name}

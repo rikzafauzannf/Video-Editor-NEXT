@@ -4,6 +4,7 @@ import { StoreContext } from "@/store";
 import { observer } from "mobx-react";
 import { VideoResource } from "../entity/VideoResource";
 import { UploadButton } from "../shared/UploadButton";
+import MyTabs from "../tabs/tabsmain";
 
 export const VideoResourcesPanel = observer(() => {
   const store = React.useContext(StoreContext);
@@ -14,17 +15,18 @@ export const VideoResourcesPanel = observer(() => {
   };
   return (
     <>
-      <div className="text-sm px-[16px] pt-[16px] pb-[8px] font-semibold">
-        Add Video
+      <div className="text-xl text-white px-[16px] pt-[16px] pb-[8px] font-semibold">
+        Pilih Avatar
       </div>
-      {store.videos.map((video, index) => {
+      {/* {store.videos.map((video, index) => {
         return <VideoResource key={video} video={video} index={index} />;
       })}
       <UploadButton
         accept="video/mp4,video/x-m4v,video/*"
         className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold text-center mx-2 py-2 px-4 rounded"
         onChange={handleFileChange}
-      />
+      /> */}
+      <MyTabs />
     </>
   );
 });
