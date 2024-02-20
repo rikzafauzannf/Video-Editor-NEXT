@@ -9,6 +9,8 @@ import { Resources } from "./Resources";
 import { ElementsPanel } from "./panels/ElementsPanel";
 import { Menu } from "./Menu";
 import { TimeLine } from "./TimeLine";
+import Navbar from "./navbar/nav";
+import Textfield from "./textfield/textfield";
 
 export const Editor = observer(() => {
   const store = React.useContext(StoreContext);
@@ -36,25 +38,37 @@ export const Editor = observer(() => {
       canvas.renderAll();
       fabric.util.requestAnimFrame(render);
     });
-  }, []);
+  }, [store]);
   return (
-    <div className="grid grid-rows-[20px_500px_1fr] grid-cols-[60px_200px_800px_1fr] h-[100%]">
-      <div className="col-span-4 bg-slate-300 text-right px-2 text-xs">
-        Created By Amit Digga
+    <>
+      <div className="p-0 m-0">
+        <Navbar />
+        <div className="w-full flex h-screen">
+          <div className="tile w-1/12 flex flex-col bg-base-300 px-3">
+            <Menu />
+          </div>
+          <div className="flex flex-col overflow-auto w-1/5 px-4 bg-slate-800/50">
+            <Resources />
+          </div>
+          <div className="flex-auto w-full h-screen overflow-y-auto px-4">
+            <div className="w-full flex justify-center items-center p-5">
+              <canvas
+                id="canvas"
+                className="h-[500px] w-[800px] row col-start-3 shadow-lg"
+              />
+            </div>
+            <div className="px-3 rounded-md">
+              <Textfield />
+            </div>
+            <div className="col-start-3 row-start-3 col-span-2 relative overflow-scroll overflow-y-auto px-[10px] py-[4px]">
+              <TimeLine />
+            </div>
+          </div>
+          <div className="w-1/5">
+            <ElementsPanel />
+          </div>
+        </div>
       </div>
-      <div className="tile row-span-2 flex flex-col">
-        <Menu />
-      </div>
-      <div className="row-span-2 flex flex-col overflow-auto">
-        <Resources />
-      </div>
-      <canvas id="canvas" className="h-[500px] w-[800px] row col-start-3" />
-      <div className="col-start-4 row-start-2">
-        <ElementsPanel />
-      </div>
-      <div className="col-start-3 row-start-3 col-span-2 relative overflow-scroll px-[10px] py-[4px]">
-        <TimeLine />
-      </div>
-    </div>
+    </>
   );
 });

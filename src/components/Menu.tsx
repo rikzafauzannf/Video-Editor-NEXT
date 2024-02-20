@@ -24,7 +24,7 @@ export const Menu = observer(() => {
           <button
             key={option.name}
             onClick={() => option.action(store)}
-            className="py-4 px-2 w-full flex flex-col items-center text-xs"
+            className="py-4 px-2 w-full flex flex-row space-x-3 items-center text-xs"
           >
             <option.icon
               className=""
