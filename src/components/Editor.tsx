@@ -51,23 +51,24 @@ export const Editor = observer(() => {
           <div className="flex flex-col overflow-y-auto w-[30%] bg-gradient-to-b from-primary to-primary/50 transition-all ease-in-out duration-200  px-4 relative">
             <Resources />
           </div>
-          <div className="flex-auto w-full h-screen overflow-y-auto px-4 relative">
-            <div className="w-full flex justify-center items-center p-5">
+          <div className="flex-auto w-full h-screen overflow-y-auto relative">
+            <div className="w-full flex flex-col justify-center items-center p-5">
               <canvas
                 id="canvas"
                 className="h-[500px] w-[800px] row col-start-3 shadow-lg"
               />
+              <ElementsPanel />
             </div>
-            <div className="px-3 rounded-md">
+            <div className=" rounded-md">
               <Textfield />
             </div>
             <div className="col-start-3 row-start-3 col-span-2 relative overflow-scroll overflow-y-auto px-[10px] py-[4px]">
               <TimeLine />
             </div>
           </div>
-          <div className="w-1/5">
+          {/* <div className="w-1/5">
             <ElementsPanel />
-          </div>
+          </div> */}
         </div>
       </div>
     </>

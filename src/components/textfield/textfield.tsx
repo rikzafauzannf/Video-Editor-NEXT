@@ -4,7 +4,7 @@ import Select from "./select";
 const Textfield = () => {
   return (
     <>
-      <div className="mt-5 space-y-2">
+      <div className=" space-y-2">
         {/* <div className="text-sm font-semibold">Elements</div> */}
         <div className="p-5 bg-slate-600/20 w-full rounded-sm">
           <div className="space-y-3">
@@ -21,7 +21,7 @@ const Textfield = () => {
                   rows={5}
                 ></textarea>
               </div>
-              <div className="w-full flex-auto">
+              <div className="w-full flex-1">
                 <Select />
                 <div className="py-3">
                   <label htmlFor="">sss</label>

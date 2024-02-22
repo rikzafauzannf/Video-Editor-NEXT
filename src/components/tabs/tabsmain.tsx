@@ -6,6 +6,7 @@ import { StoreContext } from "@/store";
 import { observer } from "mobx-react";
 import { ImageResource } from "../entity/ImageResource";
 import React from "react";
+import SlideMain from "../Slick/SlideMain";
 
 export default function MyTabs() {
   const store = React.useContext(StoreContext);
@@ -112,8 +113,28 @@ export default function MyTabs() {
           return (
             <>
               <Tab.Panel key={item.title} className="text-white">
+                <div className="mb-10">
+                  <SlideMain>
+                    {item.content.map((slideData, index) => {
+                      return (
+                        <React.Fragment key={slideData.judul}>
+                          <div className="bg-gray-200/10 shadow me-2 flex flex-col justify-center items-center relative">
+                            <ImageResource
+                              key={slideData.action}
+                              image={slideData.action}
+                              index={index}
+                            />
+                            <div className="badge badge-neutral absolute bottom-0">
+                              {slideData.judul}
+                            </div>
+                          </div>
+                        </React.Fragment>
+                      );
+                    })}
+                  </SlideMain>
+                </div>
                 <div className="grid grid-cols-2 gap-3">
-                  {item.content.map((contentItem) => {
+                  {item.content.map((contentItem, index) => {
                     return (
                       <>
                         {/* foto */}
@@ -126,6 +147,7 @@ export default function MyTabs() {
                               <ImageResource
                                 key={contentItem.action}
                                 image={contentItem.action}
+                                index={index}
                               />
                             </div>
                           </div>
